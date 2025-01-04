@@ -10,6 +10,8 @@
             text-align: center;
             margin: 0;
             padding: 0;
+            background-color: #000000;
+            color: #ffffff;
         }
 
         .logo {
@@ -67,12 +69,18 @@
                     list-style-type: disc;
                 }
 
-        .gallery {
+        .gallery-container {
             margin: 20px auto;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
             gap: 10px;
+        }
+
+        .gallery {
+            display: flex;
+            overflow: hidden;
+            width: 1240px;
         }
 
             .gallery img {
@@ -81,8 +89,55 @@
                 object-fit: cover;
                 border: 2px solid #ddd;
                 border-radius: 5px;
+                cursor: pointer;
+                flex-shrink: 0;
             }
+
+                .gallery img:hover {
+                    border-color: #007BFF;
+                }
+
+        .arrow {
+            font-size: 30px;
+            cursor: pointer;
+            color: #ffffff;
+            user-select: none;
+        }
+
+            .arrow:hover {
+                color: #007BFF;
+            }
+
+        .additional-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            margin: 20px 20px 40px;
+        }
+
+            .additional-buttons img {
+                width: 75px;
+                cursor: pointer;
+                border: 2px solid transparent;
+                border-radius: 10px;
+            }
+
+                .additional-buttons img:hover {
+                    border-color: #007BFF;
+                }
     </style>
+    <script>let scrollPosition = 0;
+
+        function scrollGallery(direction) {
+            const gallery = document.querySelector('.gallery');
+            const scrollAmount = 310; // Image width + gap
+            scrollPosition += direction * scrollAmount;
+
+            // Ensure the scroll position doesn't go out of bounds
+            scrollPosition = Math.max(0, Math.min(scrollPosition, gallery.scrollWidth - gallery.clientWidth));
+
+            gallery.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+        }</script>
 </head>
 <body>
     <!-- Logo -->
@@ -120,11 +175,30 @@
     </div>
 
     <!-- Galerie -->
-    <div class="gallery">
-        <img src="image1.png" alt="Snímek 1">
-        <img src="image2.png" alt="Snímek 2">
-        <img src="image3.png" alt="Snímek 3">
-        <img src="image4.png" alt="Snímek 4">
+    <div class="gallery-container">
+        <span class="arrow" onclick="scrollGallery(-1)">&#9664;</span>
+        <div class="gallery">
+            <img src="image1.png" alt="Snímek 1">
+            <img src="image2.png" alt="Snímek 2">
+            <img src="image3.png" alt="Snímek 3">
+            <img src="image4.png" alt="Snímek 4">
+            <img src="image5.png" alt="Snímek 5">
+            <img src="image6.png" alt="Snímek 6">
+        </div>
+        <span class="arrow" onclick="scrollGallery(1)">&#9654;</span>
+    </div>
+
+    <!-- Další tlačítka -->
+    <div class="additional-buttons">
+        <a href="https://example.com" target="_blank">
+            <img src="button3.png" alt="Tlačítko 3">
+        </a>
+        <a href="https://example.com" target="_blank">
+            <img src="button4.png" alt="Tlačítko 4">
+        </a>
+        <a href="https://example.com" target="_blank">
+            <img src="button5.png" alt="Tlačítko 5">
+        </a>
     </div>
 </body>
 </html>
