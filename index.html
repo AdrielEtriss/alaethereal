@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -77,36 +77,36 @@
             gap: 10px;
         }
 
-        .gallery {
-            display: flex;
-            overflow: hidden;
-            width: 1240px;
-        }
-
-            .gallery img {
-                width: 300px;
-                height: 200px;
-                object-fit: cover;
-                border: 2px solid #ddd;
-                border-radius: 5px;
-                cursor: pointer;
-                flex-shrink: 0;
+            .gallery {
+                display: flex;
+                overflow: hidden;
+                width: 1240px;
             }
+
+                .gallery img {
+                    width: 300px;
+                    height: 200px;
+                    object-fit: cover;
+                    border: 2px solid #ddd;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    flex-shrink: 0;
+                }
 
                 .gallery img:hover {
                     border-color: #007BFF;
                 }
 
-        .arrow {
-            font-size: 30px;
-            cursor: pointer;
-            color: #ffffff;
-            user-select: none;
-        }
-
-            .arrow:hover {
-                color: #007BFF;
+            .arrow {
+                font-size: 30px;
+                cursor: pointer;
+                color: #ffffff;
+                user-select: none;
             }
+
+                .arrow:hover {
+                    color: #007BFF;
+                }
 
         .additional-buttons {
             display: flex;
@@ -126,7 +126,8 @@
                     border-color: #007BFF;
                 }
     </style>
-    <script>let scrollPosition = 0;
+    <script>
+        let scrollPosition = 0;
 
         function scrollGallery(direction) {
             const gallery = document.querySelector('.gallery');
@@ -137,7 +138,12 @@
             scrollPosition = Math.max(0, Math.min(scrollPosition, gallery.scrollWidth - gallery.clientWidth));
 
             gallery.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-        }</script>
+        }
+
+        function openImageInNewTab(imageSrc) {
+            window.open(imageSrc, '_blank');
+        }
+    </script>
 </head>
 <body>
     <!-- Logo -->
@@ -178,25 +184,25 @@
     <div class="gallery-container">
         <span class="arrow" onclick="scrollGallery(-1)">&#9664;</span>
         <div class="gallery">
-            <img src="image1.png" alt="Snímek 1">
-            <img src="image2.png" alt="Snímek 2">
-            <img src="image3.png" alt="Snímek 3">
-            <img src="image4.png" alt="Snímek 4">
-            <img src="image5.png" alt="Snímek 5">
-            <img src="image6.png" alt="Snímek 6">
+            <img src="image1.png" alt="Snímek 1" onclick="openImageInNewTab(this.src)">
+            <img src="image2.png" alt="Snímek 2" onclick="openImageInNewTab(this.src)">
+            <img src="image3.png" alt="Snímek 3" onclick="openImageInNewTab(this.src)">
+            <img src="image4.png" alt="Snímek 4" onclick="openImageInNewTab(this.src)">
+            <img src="image5.png" alt="Snímek 5" onclick="openImageInNewTab(this.src)">
+            <img src="image6.png" alt="Snímek 6" onclick="openImageInNewTab(this.src)">
         </div>
         <span class="arrow" onclick="scrollGallery(1)">&#9654;</span>
     </div>
 
     <!-- Další tlačítka -->
     <div class="additional-buttons">
-        <a href="https://example.com" target="_blank">
+        <a href="https://discord.gg/kVPJptyjTH" target="_blank">
             <img src="button3.png" alt="Tlačítko 3">
         </a>
-        <a href="https://example.com" target="_blank">
+        <a href="https://bsky.app/profile/adrieletriss.bsky.social" target="_blank">
             <img src="button4.png" alt="Tlačítko 4">
         </a>
-        <a href="https://example.com" target="_blank">
+        <a href="https://x.com/XAeGamesX" target="_blank">
             <img src="button5.png" alt="Tlačítko 5">
         </a>
     </div>
